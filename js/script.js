@@ -1,59 +1,79 @@
-//declaro la funcion saludar
-function pedirDatos(titulo, catedra, nombre, fecha, horario, lugar){
-    console.log ("Evento: " + titulo +"\n"+ "Organiza: " + catedra +"\n"+ "Responsable: " + nombre +"\n"+ "Fecha: " + fecha +"\n"+ "Horario: " + horario +"\n"+ "Lugar: " + lugar);
-    alert("Bienvenido "+nombre+", aquí podrá reservar los equipos para su evento.")
-}
-let titulo = prompt("Titulo del evento: ");
-let catedra = prompt("Quien organiza el evento: ");
-let nombre = prompt("Nombre del Responsable: ");
-let fecha = prompt("Fecha Requerida: ");
-let horario = prompt("Horario de uso de los equipos: ");
-let lugar = prompt("Donde se utilizarán los equipos: ");
+let equipos = [{id:1, nombre: "Proyector", imagen: "../img/proyector.jpg",     stock: "6"},
+                    {id:2, nombre: "Pc / Notebook", imagen: "../img/pc.jpg", stock: "2"},
+                    {id:3, nombre: "Parlante", imagen: "../img/parlante.jpg", stock: "3"},
+                    {id:4, nombre: "Microfono", imagen: "../img/mic.jpg", stock: "6"},
+                    {id:5, nombre: "VideoConferencia", imagen: "../img/vdc.jpg", stock: "1"}];
 
-  // declaro la funcion elegir equipo
-function elegirEquipos() {
-    equipo = prompt(
-        "Elija los equipos que necesita para su evento: \n 1: Proyector \n 2: PC/Notebook \n 3: Parlante \n 4: Micrófonos  5: Equipo de VDC \n 6: Terminar"); 
-    if (equipo === "1") {
-        console.log("Reservó un Proyector")
-        alert("Seleccionó 1 proyector");
-    } else if (equipo ==="2") {
-        alert("Seleccionó 1 computadora");
-        console.log("Reservó una Computadora")
-    } else if (equipo ==="3"){
-        alert("Seleccionó 1 parlante");
-        console.log("Reservó un Parlante")
-    } else if (equipo ==="4"){
-        let mics= parseInt(prompt("Cuantos micrófonos necesita?"));
-                if(mics > microfonos){
-                    alert("No tenemos esa cantidad en el deposito.")}
-                }else if(mics <= microfonos){
-                        alert ("Seleccionó "+mics+" micrófonos");
-            } else if (equipo ==="5"){
-                alert("Seleccionó 1 Equipo de Videoconferencias");
-            }    //aca vuelvo a preguntar por el prompt de opcion para terminar el proceso
-    opcion = prompt(
-        "Necesita mas equipos? \n 1: Reservar otro Equipo  \n 2: Finalizar Reserva"
-    );
-  }
-  
-  // main
-  //declaro variables
-  let equipo;
-  let microfonos = 5;
 
-  
-//llamo a la funcion pedirDatos
-    pedirDatos(titulo, catedra, nombre, fecha, horario, lugar);
+const contenedor = document.getElementById("container");
+contenedor.innerHTML="";
+equipos.forEach((equipo, indice)=>{
+    let card=document.createElement("div")
+    card.classList.add("card","col-sm-12", "col-lg-3", "col-md-3" )
+    let html= `<img src="${equipo.imagen}" class="card-img-top" alt="${equipo.nombre}">
+    <div class="card-body">
+      <h5 class="card-title">${equipo.nombre}</h5>
+      <p class="card-text">Stock disponible: ${equipo.stock}</p>
+      <a href="#cart" class="btn btn-primary" onClick = "agregarReserva(${indice})">Seleccionar</a>
+    </div>`;
+    card.innerHTML = html;
+    contenedor.appendChild(card);
+});
 
-  elegirEquipos();
-  //agrego bucle while, mientras la opcion no sea 6...
-  
-  while(opcion !== "2"){
-    if(opcion === "1"){
-    elegirEquipos();}
-    
-    if (opcion ==="2"){break}; 
+let modalCart = document.getElementById("cart");
+const agregarReserva = (indiceEquipoarray)=>{
+    const indiceEqReserva = cart.findIndex((elemento)=>{
+        return elemento.id === equipos[indiceEquipoarray].id;
+    });
+    if(indiceEqReserva === -1){
+        const equipoAgregar = equipos[indiceEquipoarray];
+        equipoAgregar.cantidad = 1;
+        cart.push(equipoAgregar);
+        dibujarCart();
+        localStorage.setItem("reserva", JSON.stringify(cart));
 
-}
-alert("Gracias por utilizar nuestro servicio");
+    }
+    else{
+        cart[indiceEqReserva].cantidad += 1;
+        dibujarCart()
+    }
+};
+
+
+
+const dibujarCart =()=>{
+    modalCart.className = "cart";
+    modalCart.innerHTML = "";
+    if (cart.length > 0) {
+        cart.forEach((equipo, indice)=>{
+            const cartContainer = document.createElement("div");
+            cartContainer.className = "equipo-cart";
+            cartContainer.innerHTML = `<img class="car-img" src="${equipo.imagen}"/>
+                                    <div class="equipo-details">${equipo.nombre}</div>
+                                    <div class="equipo-details"> Cantidad: ${equipo.cantidad}</div>
+                                    <button class="btn btn-danger"  id="remove-eq" onClick="removeEquipo(${indice})">Eliminar Equipo</button>
+                                    `;
+        modalCart.appendChild(cartContainer); 
+        });
+     const totalContainer = document.createElement("div");
+    totalContainer.className = "total-cart";
+    totalContainer.innerHTML = `<button class= "btn btn-primary finalizar" id="finalizar" onClick="finalizarReserva()"> CONTINUAR </button>`;
+    modalCart.appendChild(totalContainer);
+    }else{
+        modalCart.classList.remove("cart")
+    }
+};
+
+let cart = [];
+
+const removeEquipo = (indice) => {
+    cart.splice(indice, 1);
+    dibujarCart();
+};
+const finalizarReserva = () => {
+    modalCart.innerHTML = "";
+    const reservaFinalizada = `<div class="datos-cliente">
+    <h2 class="datos-parrafo"> Complete el formulario con sus datos realizar la reserva</h2>
+    </div>`;
+    modalCart.innerHTML = reservaFinalizada;
+};

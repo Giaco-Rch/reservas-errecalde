@@ -1,16 +1,18 @@
-//declaro la funcion saludar
-function pedirDatos(titulo, catedra, nombre, fecha, horario, lugar){
-    console.log ("Evento: " + titulo +"\n"+ "Organiza: " + catedra +"\n"+ "Responsable: " + nombre +"\n"+ "Fecha: " + fecha +"\n"+ "Horario: " + horario +"\n"+ "Lugar: " + lugar);
-    alert("Bienvenido "+nombre+", aquí podrá reservar los equipos para su evento.")
-}
-let titulo = prompt("Titulo del evento: ");
-let catedra = prompt("Quien organiza el evento: ");
-let nombre = prompt("Nombre del Responsable: ");
-let fecha = prompt("Fecha Requerida: ");
-let horario = prompt("Horario de uso de los equipos: ");
-let lugar = prompt("Donde se utilizarán los equipos: ");
+//Array de datos
+const datos=[prompt("Titulo del evento: "), prompt("Que cátedra/oficina organiza el evento: "), prompt("Nombre del Responsable: "), prompt("Fecha Requerida: "), prompt("Horario de uso de los equipos: "), prompt("Donde se utilizarán los equipos: ")]
 
-  // declaro la funcion elegir equipo
+//Push al array
+let observaciones;
+datos.push(observaciones = prompt("Observaciones: "));
+
+console.log ("Evento: " +datos[0] +"\n"+ "Organiza: " + datos[1] +"\n"+ "Responsable: " + datos[2] +"\n"+ "Fecha: " + datos[3] +"\n"+ "Horario: " + datos[4] +"\n"+ "Lugar: " + datos[5]+"\n"+"Observaciones: "+observaciones);
+    alert("Hola "+datos[2]+"!, aquí podrás reservar los equipos para su evento.");
+
+
+  // Funcion elegirEquipos
+
+const proyector = {marca:"Epson", stock: 5};
+const computadora = {tipo: "Notebook", stock: 2};
 function elegirEquipos() {
     equipo = prompt(
         "Elija los equipos que necesita para su evento: \n 1: Proyector \n 2: PC/Notebook \n 3: Parlante \n 4: Micrófonos \n 5: Equipo de VDC \n 6: Salir"); 
@@ -36,22 +38,16 @@ function elegirEquipos() {
     );  if (opcion === "2"){return};
     }
     
-    //aca vuelvo a preguntar por el prompt de opcion para terminar el proceso
     opcion = prompt(
         "Necesita mas equipos? \n 1: Reservar otro Equipo  \n 2: Finalizar Reserva"
     );
   }
   
-  
-  // main
-  //declaro variables
   let equipo;
   
-//llamo a la funcion pedirDatos
-    pedirDatos(titulo, catedra, nombre, fecha, horario, lugar);
+
 
   elegirEquipos();
-  //agrego bucle while, mientras la opcion no sea 6...
   
   while(opcion !== "2"){
     if(opcion === "1"){

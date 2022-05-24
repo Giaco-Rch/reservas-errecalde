@@ -1,0 +1,13 @@
+*{
+    text-align: center;
+    margin: 20px;
+  }
+.mensaje-final{
+  font-size: 2rem;
+}
+.cart{
+  display: flex;
+  flex-wrap: wrap;
+}
+.finalizar{
+margin-top: 350px;}
