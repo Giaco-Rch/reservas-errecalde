@@ -1,8 +1,8 @@
-let equipos = [{id:1, nombre: "Proyector", imagen: "../img/proyector.jpg",     stock: "6"},
-                    {id:2, nombre: "Pc / Notebook", imagen: "../img/pc.jpg", stock: "2"},
-                    {id:3, nombre: "Parlante", imagen: "../img/parlante.jpg", stock: "3"},
-                    {id:4, nombre: "Microfono", imagen: "../img/mic.jpg", stock: "6"},
-                    {id:5, nombre: "VideoConferencia", imagen: "../img/vdc.jpg", stock: "1"}];
+let equipos = [{id:1, nombre: "Proyector", imagen: "./img/proyector.jpg",     stock: "6"},
+                    {id:2, nombre: "Pc / Notebook", imagen: "./img/pc.jpg", stock: "2"},
+                    {id:3, nombre: "Parlante", imagen: "./img/parlante.jpg", stock: "3"},
+                    {id:4, nombre: "Microfono", imagen: "./img/mic.jpg", stock: "6"},
+                    {id:5, nombre: "VideoConferencia", imagen: "./img/vdc.jpg", stock: "1"}];
 
 
 const contenedor = document.getElementById("container");
@@ -48,7 +48,7 @@ const dibujarCart =()=>{
         cart.forEach((equipo, indice)=>{
             const cartContainer = document.createElement("div");
             cartContainer.className = "equipo-cart";
-            cartContainer.innerHTML = `<img class="car-img" src="${equipo.imagen}"/>
+            cartContainer.innerHTML = `<img class="car-img" src="${equipo.imagen}">
                                     <div class="equipo-details">${equipo.nombre}</div>
                                     <div class="equipo-details"> Cantidad: ${equipo.cantidad}</div>
                                     <button class="btn btn-danger"  id="remove-eq" onClick="removeEquipo(${indice})">Eliminar Equipo</button>
