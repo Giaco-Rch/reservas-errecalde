@@ -10,16 +10,19 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Pedido de Equipamiento Audiovisual</title>
 </head>
-<body>
+<body class="container">
     <div>
         <h1>Formulario de solicitud de equipamiento Audiovisual </h1>
         <h3>Datos de la solicitud</h3>
     </div>
 
+<!--    Traigo las cards por JS     -->
     <div id="container" class="row"></div>
     <div id="cart"></div>
     <a name="cart"></a>
-    <div class="row pt-3">
+
+<!--    Formulario de Reserva     -->
+    <div class="row pt-3" id="formularioReserva">
       <h2 class="text-center">Datos para la Reserva</h2>
        <div class= "col-md-6 offset-md-3">
        <form>
@@ -50,15 +53,8 @@
          <button type="button" id="boton_enviar" class="btn btn-primary">Enviar</button>
        </form>
        <div id="error"></div>
-       </div></div>
-
-
-
-
-
-
-
-
+       </div>
+      </div>
 
 
     <script

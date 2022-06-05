@@ -16,7 +16,6 @@ fetch('js/equipos.json')
     contenedor.appendChild(card);
 })});
 
-
 let modalCart = document.getElementById("cart");
 const agregarReserva = (indiceEquipoarray)=>{
 
@@ -26,7 +25,6 @@ const agregarReserva = (indiceEquipoarray)=>{
     const indiceEqReserva = cart.findIndex((elemento)=>{
         return elemento.id === data[indiceEquipoarray].id;
     });
-
 
     if(indiceEqReserva === -1){
         const equipoAgregar = data[indiceEquipoarray];
@@ -41,8 +39,6 @@ const agregarReserva = (indiceEquipoarray)=>{
         dibujarCart()
     }
 })};
-
-
 
 const dibujarCart =()=>{
     modalCart.className = "cart";
@@ -65,7 +61,7 @@ const dibujarCart =()=>{
         });
      const totalContainer = document.createElement("div");
     totalContainer.className = "total-cart";
-    totalContainer.innerHTML = `<button class= "btn btn-primary finalizar" id="finalizar" onClick="finalizarReserva()"> CONTINUAR </button>`;
+    totalContainer.innerHTML = `<button class= "btn btn-primary finalizar" id="finalizar" onClick="finalizarReserva()" "mostrarFormularioReserva()"> CONTINUAR </button>`;
     modalCart.appendChild(totalContainer);
     }else{
         modalCart.classList.remove("cart")
@@ -82,6 +78,7 @@ const finalizarReserva = () => {
     modalCart.innerHTML = "";
     const reservaFinalizada = `<div class="datos-cliente">
     <h2 class="datos-parrafo"> Complete el formulario con sus datos realizar la reserva</h2>
-    </div>`;
+    </div>`
+    document.getElementById('formularioReserva').style.display = "block";
     modalCart.innerHTML = reservaFinalizada;
 };

@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="style.css">
     <title>Pedido de Equipamiento Audiovisual</title>
 </head>
-<body>
-    <h1>Confirmacion de la Reserva</h1>
-    <div id="resumen_reserva" class="row">
-
-    </div>
+<body class="container mt-5">
+    <section>
+      <h1>Confirmación de la Reserva</h1>
+      <p>Imprimir esta hoja y hacer autorizar el pedido</p>
+    </section>
+    <div id="resumen_reserva" class="row"></div>  
+    <div class="row">
+      <div class="col-md-12 fw-bold my-5">
+        <span class="me-5">Firma del Organizador</span>
+        <span class="ms-5">Firma de Autorización</span>
+      </div>
+      </div>
+    <button class="btn btn-primary" onclick="imprimirPagina()" id="imprimir">Imprimir</button>
 
 
 

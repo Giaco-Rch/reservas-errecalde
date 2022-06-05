@@ -7,7 +7,7 @@ const resumen_reserva = document.getElementById ("resumen_reserva");
 const{titulo, nombre, organizador, email, fecha, lugar} = datos_formulario;
 
 
-let contenido = `<div class="col-md-5">
+let contenido = `<div class="col-md-6 my-3">
 <h3>Equipos Reservados</h3>
 <ul class="list-group list-group-flush">`;
 
@@ -16,7 +16,7 @@ for (let equipo of reserva) {
 }
 contenido +=`</ul>
 </div>`;
-contenido += `<div class="col-md-5">
+contenido += `<div class="col-md-6 my-3">
 <h3>Datos del Evento</h3>
 <ul class="list-group list-group-flush">
 <li class="list-group-item"> Titulo del Evento: <b>${titulo}</b></li>
@@ -29,3 +29,8 @@ contenido += `<div class="col-md-5">
 </div>`;
 
 resumen_reserva.innerHTML = contenido;
+
+
+function imprimirPagina(){
+    window.print();
+}

@@ -1,6 +1,5 @@
 *{
     text-align: center;
-    margin: 20px;
   }
 .mensaje-final{
   font-size: 2rem;
@@ -11,3 +10,10 @@
 }
 .finalizar{
 margin-top: 350px;}
+
+#formularioReserva {
+  display: none;
+}
+#firmas {
+  display: none;
+}
