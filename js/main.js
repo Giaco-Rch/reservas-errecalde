@@ -1,4 +1,3 @@
-//Array de datos
 const datos=[prompt("Titulo del evento: "), prompt("Que cátedra/oficina organiza el evento: "), prompt("Nombre del Responsable: "), prompt("Fecha Requerida: "), prompt("Horario de uso de los equipos: "), prompt("Donde se utilizarán los equipos: ")]
 
 //Push al array

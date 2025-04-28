@@ -19,7 +19,6 @@ function noti_error(campo){
 let datos_formulario = {titulo:titulo, nombre:nombre, organizador:organizador, email:email, fecha:fecha, lugar:lugar}
     localStorage.setItem("datos_formulario", JSON.stringify(datos_formulario));
 
-//nombre.length == 0 ? error_form.innerHTML = `<p class="bg-danger text-white p-3">Ingrese el nombre del responsable!</p>` : error_form.innerHTML = "";
 
 
 (email.length < 5) || (email.indexOf("@") == -1) || (email.indexOf(".") == -1) || (nombre.length < 5) || (lugar.length < 3) || (fecha.length == 0)? error_form.innerHTML = `<p class="bg-danger text-white p-3">Revise los campos requeridos!</p>` : document.location = "confirmacion.html";
@@ -29,7 +28,6 @@ if (email.length < 5 || email.indexOf("@") == -1 || email.indexOf(".") == -1){no
 if (fecha.length < 3) {noti_error("fecha"); return false};
 if (lugar.length < 3) {noti_error("lugar"); return false};
 
-    //document.location = "confirmacion.html"
     
     }
     document.getElementById("boton_enviar").addEventListener("click", validarFormulario);
