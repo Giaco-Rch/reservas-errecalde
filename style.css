@@ -1,19 +1,99 @@
-*{
-    text-align: center;
-  }
-.mensaje-final{
-  font-size: 2rem;
+/* Estilo general */
+body {
+  background-color: #f8f9fa;
+  padding: 20px;
 }
-.cart{
+
+/* Títulos */
+h1, h2, h3 {
+  color: #0d6efd;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Contenedor principal */
+.container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartas de equipamiento */
+#container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
-.finalizar{
-margin-top: 350px;}
 
+/* Estilo del carrito */
+#cart {
+  margin-top: 30px;
+}
+
+/* Formulario */
 #formularioReserva {
+  background: #e9ecef;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+/* Inputs del formulario */
+form input[type="text"],
+form input[type="email"],
+form input[type="datetime-local"] {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* Botón de enviar */
+#boton_enviar {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: #0d6efd;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#boton_enviar:hover {
+  background-color: #0b5ed7;
+}
+
+/* Error message */
+#error {
+  margin-top: 15px;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Para ocultar formularios al inicio */
+#formularioReserva, #firmas {
   display: none;
 }
-#firmas {
-  display: none;
+
+/* Mensaje final */
+.mensaje-final {
+  font-size: 2rem;
+  color: #198754;
+}
+
+/* Carrito */
+.cart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Botón de imprimir en la confirmación */
+#imprimir {
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
